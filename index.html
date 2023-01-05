@@ -5,13 +5,20 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   </head>
   <body>
     <header>
-      <form id="searchForm">
-        <input type="text" placeholder="Rechercher" id="searchInput" name="searchInput">
-      </form>
-      <button data-tabId="characters">clear</button>
+      <h1>Barre de recherche :</h1>
+      <div class="search">
+        <form id="searchForm">
+          <input type="text" placeholder="Rechercher" id="searchInput" name="searchInput">
+        </form>
+        <button data-tabId="characters">
+          <i class="bi bi-arrow-clockwise"></i>
+        </button>
+      </div>
+      <h1>Liste de personnages :</h1>
     </header>
     <div id="app"></div>
     <script type="module" src="/main.js"></script>
