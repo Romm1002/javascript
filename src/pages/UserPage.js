@@ -13,8 +13,8 @@ const fetchUsers = async () =>  {
 
 const UserPage = async () => {
   const res = await fetchUsers()
-
-  return CardList(res.data)
+  console.log(res);
+  return CardList(res.results)
 }
 
 export default UserPage
