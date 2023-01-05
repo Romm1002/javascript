@@ -4,7 +4,16 @@ import Card from "./Card";
 export default function CardList(arrayOfCards) {
   return createElement({
     tagName: 'div',
-    classList: ['users'],
-    children: arrayOfCards.map(({ id, name, image }) => Card({ id: id, text: name, src: image, classList: ['character'] }))
+    children: [
+      {
+        tagName: 'h1',
+        text: 'Liste de personnages: '
+      },
+      {
+        tagName: 'div',
+        classList: ['users'],
+        children: arrayOfCards.map(({ id, name, image }) => Card({ id: id, text: name, src: image, classList: ['character'] }))
+      }
+    ]
   })
 }
