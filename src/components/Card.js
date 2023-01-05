@@ -1,6 +1,7 @@
-export default function Card({ src, text, id }) {
+export default function Card({ src, text, id, classList }) {
   return {
     tagName: 'div',
+    classList: classList,
     attributes: {
       id: id,
     },
