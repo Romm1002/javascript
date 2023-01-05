@@ -9,6 +9,10 @@ const createElement = (obj) => {
     element.classList.add(...obj.classList);
   }
 
+  if('id' in obj) {
+    element.id = obj.id;
+  }
+
   if ('text' in obj) {
     element.textContent = obj.text;
   }
