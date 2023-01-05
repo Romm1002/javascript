@@ -1,28 +1,27 @@
 import { tabManager } from "../../main"
 import CardList from "../components/CardList"
 import createElement from "../dom/createElement"
+import ApiManager from "../utils/ApiManager"
 
-const fetchCharacters = async (search) => {
-  try {
-    const req = await fetch('https://rickandmortyapi.com/api/character' + search)
-    const res = await req.json()
+const apiManager = new ApiManager();
 
-    return res
-  } catch (e) {
-    throw new Error(e)
+
+const CharactersPage = async ({ search }) => {
+  let res = [];
+  if (search != '') {
+    res = await apiManager.fetchCharacters(search)
+  } else {
+    res = await apiManager.fetchAllCharacters()
   }
-}
-
-const CharactersPage = async ({search}) => {
-  const res = await fetchCharacters(search)
-  if ('error' in res){
-    return createElement({tagName: 'h2', text: res.error})
+  if ('error' in res) {
+    return createElement({ tagName: 'h2', text: res.error })
   }
   let list = CardList(res.results);
-  for (let card of list.querySelectorAll('.character')){
+
+  for (let card of list.querySelectorAll('.character')) {
     card.addEventListener('click', e => {
-      tabManager.componentMapping.character.params = [{id: e.currentTarget.id}]
-      tabManager.openTabById('character')
+      tabManager.componentMapping.character.params = [{ id: e.currentTarget.id }]
+      tabManager.openTabById('character',)
     })
   }
   return list;
