@@ -1,6 +1,5 @@
 import './style.css'
 import CharactersPage from "./src/pages/CharactersPage";
-import SearchPage from "./src/pages/SearchPage";
 import TabManager from "./src/utils/TabManager";
 
 const rootElement = document.querySelector('#app')
