@@ -15,19 +15,23 @@ export default function Character({ name, status, species, type, gender, origin,
                 children: [
                     {
                         tagName: 'h2',
-                        text: name,
+                        text: name + ' ',
+                        innerHTML: gender == "Male" ? "<i class='bi bi-gender-male'></i>" : "<i class='bi bi-gender-female'></i>",
                     },
                     {
                         tagName: 'div',
                         classList: ['row'],
                         children: [
                             {
-                                tagName: 'dt',
-                                text: 'Status : '
-                            },
-                            {
-                                tagName: 'dd',
-                                text: status
+                                tagName: 'p',
+                                classList: ['status'],
+                                children: [
+                                    {
+                                        tagName: 'div',
+                                        classList: [status == 'Alive' ? 'green' : 'red']
+                                    }
+                                ],
+                                text: status + ' - ' + species,
                             },
                         ]
                     },
@@ -36,12 +40,8 @@ export default function Character({ name, status, species, type, gender, origin,
                         classList: ['row'],
                         children: [
                             {
-                                tagName: 'dt',
-                                text: species + ' - &nbsp;'
-                            },
-                            {
-                                tagName: 'dd',
-                                text: gender
+                                tagName: 'p',
+                                text: 'Status : ' + status
                             },
                         ]
                     },
@@ -50,12 +50,8 @@ export default function Character({ name, status, species, type, gender, origin,
                         classList: ['row'],
                         children: [
                             {
-                                tagName: 'dt',
-                                text: 'Dernière localisation connue : '
-                            },
-                            {
-                                tagName: 'dd',
-                                text: location.name
+                                tagName: 'p',
+                                text: 'Dernière localisation connue : ' + location.name
                             },
                         ]
                     },
@@ -64,12 +60,8 @@ export default function Character({ name, status, species, type, gender, origin,
                         classList: ['row'],
                         children: [
                             {
-                                tagName: 'dt',
-                                text: 'Origine : '
-                            },
-                            {
-                                tagName: 'dd',
-                                text: origin.name
+                                tagName: 'p',
+                                text: 'Origine : ' + origin.name
                             },
                         ]
                     },

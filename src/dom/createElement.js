@@ -23,6 +23,10 @@ const createElement = (obj) => {
     }
   }
 
+  if ('innerHTML' in obj) {
+    element.innerHTML += obj.innerHTML;
+  }
+
   if ('children' in obj) {
     const elements = createBulkElements(obj.children);
     elements.forEach((child) => {

@@ -21,6 +21,10 @@ h1{
   color: #fff;
 }
 
+h2{
+  color: #fff;
+}
+
 #app{
   width: 80%;
   margin: 0 auto;
@@ -29,7 +33,7 @@ h1{
   padding-top: 20px;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .search{
@@ -71,10 +75,11 @@ h1{
   object-fit: cover;
 }
 .users div p{
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   margin-top: 10px;
   color: #fff;
+  text-align: center;
 }
 .users div p:hover{
   color: orange;
@@ -86,6 +91,7 @@ h1{
   background-color: rgb(60, 62, 68);
   width: 100%;
   border-radius: 20px;
+  cursor: default;
 }
 
 .details img{
@@ -97,8 +103,37 @@ h1{
 
 .details .infos{
   width: 100%;
-  padding-left: 10px;
+  padding: 10px 0 10px 15px;
 }
 .details .infos .row{
   display: flex;
+}
+.details .infos h2{
+  color: #fff;
+}
+.details .infos h2:hover{
+  color: orange;
+}
+
+.details .infos .row p{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  color: #fff;
+}
+
+.details .infos .row p .green{
+  width: 10px;
+  height: 10px;
+  background-color: green;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.details .infos .row p .red{
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  margin-right: 5px;
 }
