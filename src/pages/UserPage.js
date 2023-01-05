@@ -2,7 +2,7 @@ import CardList from "../components/CardList"
 
 const fetchUsers = async () =>  {
   try {
-    const req = await fetch('https://reqres.in/api/users')
+    const req = await fetch('https://rickandmortyapi.com/api/character')
     const res = await req.json()
   
     return res
