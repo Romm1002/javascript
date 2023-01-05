@@ -1,25 +1,18 @@
 import './style.css'
-import UserPage from "./src/pages/UserPage";
+import CharactersPage from "./src/pages/CharactersPage";
 import SearchPage from "./src/pages/SearchPage";
 import TabManager from "./src/utils/TabManager";
 
 const rootElement = document.querySelector('#app')
-const tabManager = new TabManager(rootElement, {
-  page1: {
-    component: () => document.createElement('div'),
-    params: [{ src: 'http://placekitten.com/200/200', text: 'A cat' }]
-  },
-  user: {
-    component: UserPage,
-  },
-  search: {
-    component: SearchPage,
-    params: [{search: ''}]  
+export const tabManager = new TabManager(rootElement, {
+  characters: {
+    component: CharactersPage,
+    params: [{search: ''}]
   },
 
 })
 
-tabManager.openTabById('user');
+tabManager.openTabById('characters');
 
 document.querySelectorAll('[data-tabId]').forEach(element => {
   element.addEventListener('click', () => {
@@ -29,6 +22,7 @@ document.querySelectorAll('[data-tabId]').forEach(element => {
 
 document.querySelector('#searchForm').addEventListener('submit', e => {
   e.preventDefault();
-  tabManager.componentMapping.search.params = [{search: document.querySelector('#searchInput').value}]  
-  tabManager.openTabById('search')
+  tabManager.componentMapping.characters.params = [{search: '?name=' + document.querySelector('#searchInput').value}]  
+  tabManager.openTabById('characters')
 })
+
