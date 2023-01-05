@@ -1,6 +1,6 @@
 import { tabManager } from "../../main"
-import Card from "../components/Card"
 import CardList from "../components/CardList"
+import createElement from "../dom/createElement"
 
 const fetchCharacters = async (search) => {
   try {
@@ -15,10 +15,14 @@ const fetchCharacters = async (search) => {
 
 const CharactersPage = async ({search}) => {
   const res = await fetchCharacters(search)
+  if ('error' in res){
+    return createElement({tagName: 'h2', text: res.error})
+  }
   let list = CardList(res.results);
   for (let card of list.querySelectorAll('.character')){
     card.addEventListener('click', e => {
-      console.log(tabManager);
+      tabManager.componentMapping.character.params = [{id: e.currentTarget.id}]
+      tabManager.openTabById('character')
     })
   }
   return list;
