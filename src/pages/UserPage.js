@@ -13,7 +13,6 @@ const fetchUsers = async () =>  {
 
 const UserPage = async () => {
   const res = await fetchUsers()
-  console.log(res);
   return CardList(res.results)
 }
 
