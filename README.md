@@ -1,4 +1,7 @@
 # Installation du projet
+- Pour installer le projet :
+  - npm install
+  - npm run dev
 
 # Utilisation du projet
 - La page d'accueil (par défaut), affiche une liste de personnages
