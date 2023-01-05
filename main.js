@@ -26,7 +26,7 @@ document.querySelectorAll('[data-tabId]').forEach(element => {
 
 document.querySelector('#searchForm').addEventListener('submit', e => {
   e.preventDefault();
-  tabManager.componentMapping.characters.params = [{ search: '?name=' + document.querySelector('#searchInput').value }]
+  tabManager.componentMapping.characters.params = [{ search: document.querySelector('#searchInput').value }]
   tabManager.openTabById('characters')
   tabManager.componentMapping.characters.params = [{ search: '' }]
 })

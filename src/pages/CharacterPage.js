@@ -1,20 +1,11 @@
 import Character from "../components/Character"
+import ApiManager from "../utils/ApiManager"
 import createElement from "../dom/createElement"
 
-const fetchCharacter = async (id) => {
-  try {
-    const req = await fetch('https://rickandmortyapi.com/api/character/' + id)
-    const res = await req.json()
-
-    return res
-  } catch (e) {
-    throw new Error(e)
-  }
-}
+const apiManager = new ApiManager();
 
 const CharacterPage = async ({id}) => {
-    const res = await fetchCharacter(id)
-    console.log(res)
+    const res = await apiManager.fetchCharacter(id)
     return createElement(Character(res))
 }
 
