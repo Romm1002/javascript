@@ -1,5 +1,4 @@
-import createElement from "../dom/createElement";
-import Card from "./Card";
+import Card from "./CharacterCard";
 
 export default function CardList(arrayOfCards) {
   return {

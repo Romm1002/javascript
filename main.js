@@ -1,6 +1,7 @@
 import './style.css'
 import CharactersPage from "./src/pages/CharactersPage";
 import CharacterPage from "./src/pages/CharacterPage";
+import LocationsPage from "./src/pages/LocationsPage";
 import TabManager from "./src/utils/TabManager";
 
 const rootElement = document.querySelector('#app')
@@ -12,7 +13,11 @@ export const tabManager = new TabManager(rootElement, {
   character: {
     component: CharacterPage,
     params: [{ id: '' }]
-  }
+  },
+  locations: {
+    component: LocationsPage,
+    params: [{ search: '', page: 1 }]
+  },
 
 })
 
