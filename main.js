@@ -7,7 +7,7 @@ const rootElement = document.querySelector('#app')
 export const tabManager = new TabManager(rootElement, {
   characters: {
     component: CharactersPage,
-    params: [{ search: '' }]
+    params: [{ search: '', page: 1 }]
   },
   character: {
     component: CharacterPage,
@@ -18,7 +18,7 @@ export const tabManager = new TabManager(rootElement, {
 
 tabManager.openTabById('characters');
 document.querySelector('#searchRefresh').addEventListener('click', e => {
-  tabManager.componentMapping.characters.params = [{ search: '' }]
+  tabManager.componentMapping.characters.params[0].search = ''
 })
 document.querySelectorAll('[data-tabId]').forEach(element => {
   element.addEventListener('click', () => {
@@ -28,7 +28,7 @@ document.querySelectorAll('[data-tabId]').forEach(element => {
 
 document.querySelector('#searchForm').addEventListener('submit', e => {
   e.preventDefault();
-  tabManager.componentMapping.characters.params = [{ search: document.querySelector('#searchInput').value }]
+  tabManager.componentMapping.characters.params[0].search = document.querySelector('#searchInput').value
   tabManager.openTabById('characters')
 })
 

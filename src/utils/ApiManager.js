@@ -4,9 +4,9 @@ class ApiManager {
     }
 
 
-    async fetchAllCharacters() {
+    async fetchAllCharacters(page) {
         try {
-            const req = await fetch(this.rootUrl + '/character')
+            const req = await fetch(this.rootUrl + '/character' + '?page=' + page)
             const res = await req.json()
 
             return res
@@ -15,9 +15,9 @@ class ApiManager {
         }
     }
 
-    async fetchCharacters(search) {        
+    async fetchCharacters(search, page) {        
         try {
-            const req = await fetch(this.rootUrl + '/character?name=' + search)
+            const req = await fetch(this.rootUrl + '/character?name=' + search + '&page=' + page)
             const res = await req.json()
 
             return res
