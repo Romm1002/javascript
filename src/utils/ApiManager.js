@@ -37,6 +37,39 @@ class ApiManager {
         }
     }
 
+    async fetchAllLocations(page){
+        try {
+            const req = await fetch(this.rootUrl + '/location' + '?page=' + page)
+            const res = await req.json()
+
+            return res
+        } catch (e) {
+            throw new Error(e)
+        }
+    }
+
+    async fetchLocations(search, page) {        
+        try {
+            const req = await fetch(this.rootUrl + '/location?name=' + search + '&page=' + page)
+            const res = await req.json()
+
+            return res
+        } catch (e) {
+            throw new Error(e)
+        }
+    }
+
+    async fetchLocation(id) {
+        try {
+            const req = await fetch(this.rootUrl + '/location/' + id)
+            const res = await req.json()
+
+            return res
+        } catch (e) {
+            throw new Error(e)
+        }
+    }
+
 }
 
 export default ApiManager
