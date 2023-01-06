@@ -28,11 +28,12 @@ const CharactersPage = async ({ search, page }) => {
       component.children.push({
         tagName: 'button',
         text: 'prev',
+        classList: ['pagination-prev'],
         eventListener: {
           event: 'click',
           function: () => {
-            tabManager.componentMapping.characters.params[0].page = new URLSearchParams(res.info.prev.slice(res.info.prev.indexOf('?'))).get('page');
-            tabManager.openTabById('characters');
+            tabManager.componentMapping.locations.params[0].page = new URLSearchParams(res.info.prev.slice(res.info.prev.indexOf('?'))).get('page');
+            tabManager.openTabById('locations');
           }
         }
       })
@@ -41,11 +42,12 @@ const CharactersPage = async ({ search, page }) => {
       component.children.push({
         tagName: 'button',
         text: 'next',
+        classList: ['pagination-next'],
         eventListener: {
           event: 'click',
           function: () => {
-            tabManager.componentMapping.characters.params[0].page = new URLSearchParams(res.info.next.slice(res.info.next.indexOf('?'))).get('page');
-            tabManager.openTabById('characters');
+            tabManager.componentMapping.locations.params[0].page = new URLSearchParams(res.info.next.slice(res.info.next.indexOf('?'))).get('page');
+            tabManager.openTabById('locations');
           }
         }
       })

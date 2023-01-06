@@ -10,7 +10,7 @@ export default function Card({ src, text, id, classList }) {
       event: 'click',
       function: e => {
         tabManager.componentMapping.character.params = [{ id: e.currentTarget.id }]
-        tabManager.openTabById('character',)
+        tabManager.openTabById('character')
       }
     },
     children: [
