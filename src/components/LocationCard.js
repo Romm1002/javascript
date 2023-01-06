@@ -16,14 +16,17 @@ export default function Card({name, type, dimension, residents, id, classList })
     children: [
       {
         tagName: 'p',
+        classList: ['p1'],
         text: type + ' ' + name
       },
       {
         tagName: 'p',
+        classList: ['p2'],
         text: dimension
       },
       {
         tagName: 'p',
+        classList: ['p3'],
         text: residents.length + ' résidents'
       },
     ]

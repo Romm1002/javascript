@@ -26,6 +26,7 @@ nav{
   top: 0;
   left: 0;
   box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+  z-index: 999;
 }
 nav .wrapper{
   width: 80%;
@@ -294,4 +295,49 @@ h2{
   border-radius: 15px;
   cursor: pointer;
   margin-right: 15px;
+}
+
+
+.locations{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+@media screen and (max-width: 700px){
+  .locations{
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.location{
+  background-color: rgb(60, 62, 68);
+  margin: 0 10px 20px 10px;
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.location .p1, .location .p2, .location .p3{
+  position: relative;
+  padding-left: 18px;
+  color: rgb(245, 245, 245);
+  font-weight: 600;
+}
+.location .p1::before{
+  content: '📍';
+  position: absolute;
+  left: -6px;
+}
+
+.location .p2::before{
+  content: '🌌';
+  position: absolute;
+  left: -6px;
+}
+
+.location .p3::before{
+  content: '🏡';
+  position: absolute;
+  left: -6px;
 }
