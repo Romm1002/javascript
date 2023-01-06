@@ -1,76 +1,96 @@
+import { tabManager } from "../../main"
+
 export default function Character({ name, status, species, type, gender, origin, location, image }) {
     return {
         tagName: 'div',
-        classList: ['details'],
         children: [
             {
-                tagName: 'img',
+                tagName: 'h1',
+                text: 'Retour',
                 attributes: {
-                    src: image
+                    'data-tabId': 'characters'
+                },
+                eventListener: {
+                    event: 'click',
+                    function: () => {
+                        tabManager.openTabById('characters')
+                    }
                 }
             },
             {
                 tagName: 'div',
-                classList: ['infos'],
+                classList: ['details'],
                 children: [
                     {
-                        tagName: 'h2',
-                        text: name + ' ',
-                        innerHTML: (gender == "Male") ? "<i class='bi bi-gender-male'></i>" : (gender == "Female") ? "<i class='bi bi-gender-female'></i>" : (gender == "Genderless" || "unknown") ? "<i class='bi bi-gender-ambiguous'></i>" : "",
+                        tagName: 'img',
+                        attributes: {
+                            src: image
+                        }
                     },
                     {
                         tagName: 'div',
-                        classList: ['row'],
+                        classList: ['infos'],
                         children: [
                             {
-                                tagName: 'p',
-                                classList: ['status'],
-                                children: [
-                                    {
-                                        tagName: 'div',
-                                        classList: [(status == 'Alive') ? 'green' : (status == 'Dead') ? 'red' : (status == 'unknown') ? 'grey' : '']
-                                    }
-                                ],
-                                text: status + ' - ' + species,
+                                tagName: 'h2',
+                                text: name + ' ',
+                                innerHTML: (gender == "Male") ? "<i class='bi bi-gender-male'></i>" : (gender == "Female") ? "<i class='bi bi-gender-female'></i>" : (gender == "Genderless" || "unknown") ? "<i class='bi bi-gender-ambiguous'></i>" : "",
                             },
-                        ]
-                    },
-                    {
-                        tagName: 'div',
-                        classList: ['row', 'column'],
-                        children: [
                             {
-                                tagName: 'p',
-                                classList: ['subtitle'],
-                                text: 'Dernière localisation connue :',
+                                tagName: 'div',
+                                classList: ['row'],
                                 children: [
                                     {
-                                        tagName: 'span',
-                                        text: location.name
-                                    }
+                                        tagName: 'p',
+                                        classList: ['status'],
+                                        children: [
+                                            {
+                                                tagName: 'div',
+                                                classList: [(status == 'Alive') ? 'green' : (status == 'Dead') ? 'red' : (status == 'unknown') ? 'grey' : '']
+                                            }
+                                        ],
+                                        text: status + ' - ' + species,
+                                    },
+                                ]
+                            },
+                            {
+                                tagName: 'div',
+                                classList: ['row', 'column'],
+                                children: [
+                                    {
+                                        tagName: 'p',
+                                        classList: ['subtitle'],
+                                        text: 'Dernière localisation connue :',
+                                        children: [
+                                            {
+                                                tagName: 'span',
+                                                text: location.name
+                                            }
+                                        ]
+                                    },
+                                ]
+                            },
+                            {
+                                tagName: 'div',
+                                classList: ['row', 'column'],
+                                children: [
+                                    {
+                                        tagName: 'p',
+                                        classList: ['subtitle'],
+                                        text: 'Origine :',
+                                        children: [
+                                            {
+                                                tagName: 'span',
+                                                text: origin.name
+                                            }
+                                        ]
+                                    },
                                 ]
                             },
                         ]
                     },
-                    {
-                        tagName: 'div',
-                        classList: ['row', 'column'],
-                        children: [
-                            {
-                                tagName: 'p',
-                                classList: ['subtitle'],
-                                text: 'Origine :',
-                                children: [
-                                    {
-                                        tagName: 'span',
-                                        text: origin.name
-                                    }
-                                ]
-                            },
-                        ]
-                    },
-                ]
-            },
-        ],
+                ],
+            }
+        ]
     }
 }
