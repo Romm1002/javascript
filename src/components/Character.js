@@ -1,6 +1,6 @@
 import { tabManager } from "../../main"
 
-export default function Character({ name, status, species, type, gender, origin, location, image }) {
+export default function Character({ name, status, species, gender, origin, location, image }) {
     return {
         tagName: 'div',
         children: [
@@ -65,12 +65,13 @@ export default function Character({ name, status, species, type, gender, origin,
                                             {
                                                 tagName: 'span',
                                                 text: location.name,
-                                                // eventListener:{
-                                                //     event: 'click',
-                                                //     function: () => {
-
-                                                //     }
-                                                // }
+                                                eventListener:{
+                                                    event: 'click',
+                                                    function: () => {
+                                                        tabManager.componentMapping.location.params[0].id = location.id
+                                                        tabManager.openTabById('location')
+                                                    }
+                                                }
                                             }
                                         ]
                                     },
@@ -87,7 +88,14 @@ export default function Character({ name, status, species, type, gender, origin,
                                         children: [
                                             {
                                                 tagName: 'span',
-                                                text: origin.name
+                                                text: origin.name,
+                                                eventListener:{
+                                                    event: 'click',
+                                                    function: () => {
+                                                        tabManager.componentMapping.location.params[0].id = origin.id
+                                                        tabManager.openTabById('location')
+                                                    }
+                                                }
                                             }
                                         ]
                                     },

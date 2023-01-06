@@ -52,9 +52,11 @@ class ApiManager {
                 image
                 location{
                   name
+                  id
                 }
                 origin{
                   name
+                  id
                 }
               }
         }

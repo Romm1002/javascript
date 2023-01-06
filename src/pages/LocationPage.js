@@ -8,7 +8,6 @@ const apiManager = new ApiManager();
 
 const LocationPage = async ({id}) => {
     const res = await apiManager.fetchLocation(id)
-    console.log(res.data.location)
     let component = {tagName: 'div', children: []}
     component.children.push({
       tagName: 'h1',
@@ -25,7 +24,6 @@ const LocationPage = async ({id}) => {
     })
     component.children.push(Location(res.data.location))
     component.children.push(CardList(res.data.location.residents))
-    console.log(component);
     return createElement(component)
 }
 
