@@ -92,6 +92,8 @@ h2{
   width: 100%;
   border-radius: 20px;
   cursor: default;
+  width: fit-content;
+  padding-right: 50px;
 }
 
 .details img{
@@ -99,6 +101,8 @@ h2{
   height: 200px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
+  height: 100%;
+  object-fit: contain;
 }
 
 .details .infos{
@@ -109,17 +113,21 @@ h2{
   display: flex;
 }
 .details .infos h2{
-  color: #fff;
-}
-.details .infos h2:hover{
-  color: orange;
+  color: rgb(245, 245, 245);
+  font-weight: 800;
 }
 
 .details .infos .row p{
   display: flex;
-  flex-direction: row-reverse;
+}
+.details .infos .row p.status{
   align-items: center;
-  color: #fff;
+  flex-direction: row-reverse;
+  color: rgb(245, 245, 245);
+  font-size: 14px;
+  margin-top: -3px;
+  margin-bottom: 15px;
+  font-weight: 500;
 }
 
 .details .infos .row p .green{
@@ -136,4 +144,32 @@ h2{
   background-color: red;
   border-radius: 50%;
   margin-right: 5px;
+}
+
+.details .infos .row p .grey{
+  width: 10px;
+  height: 10px;
+  background-color: grey;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.details .infos .column p{
+  display: flex;
+  flex-direction: column;
+}
+
+.details .infos .column p.subtitle{
+  color: rgb(158, 158, 147);
+  font-weight: 500;
+  font-size: 16px;
+}
+.details .infos .column p.subtitle span{
+  color: rgb(245, 245, 245);
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.details .infos .column:last-child{
+  margin-top: 15px;
 }
