@@ -44,7 +44,7 @@ const CharactersPage = async ({ search, page }) => {
         eventListener: {
           event: 'click',
           function: () => {
-            tabManager.componentMapping.characters.params[0].page = res.info.next.slice(res.info.next.indexOf('page=') + 5).split('&')[0];
+            tabManager.componentMapping.characters.params[0].page = new URLSearchParams(res.info.next.slice(res.info.next.indexOf('?'))).get('page');
             tabManager.openTabById('characters');
           }
         }

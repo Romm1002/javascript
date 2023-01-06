@@ -36,16 +36,6 @@ class ApiManager {
             throw new Error(e)
         }
     }
-    async fethUrl(url) {
-        try {
-            const req = await fetch(url)
-            const res = await req.json()
-
-            return res
-        } catch (e) {
-            throw new Error(e)
-        }
-    }
 
 }
 

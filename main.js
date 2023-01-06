@@ -28,7 +28,8 @@ document.querySelectorAll('[data-tabId]').forEach(element => {
 
 document.querySelector('#searchForm').addEventListener('submit', e => {
   e.preventDefault();
-  tabManager.componentMapping.characters.params[0].search = document.querySelector('#searchInput').value
+  tabManager.componentMapping.characters.params[0].search = document.querySelector('#searchInput').value;
+  tabManager.componentMapping.characters.params[0].page = 0;
   tabManager.openTabById('characters')
 })
 
