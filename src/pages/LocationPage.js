@@ -9,19 +9,6 @@ const apiManager = new ApiManager();
 const LocationPage = async ({id}) => {
     const res = await apiManager.fetchLocation(id)
     let component = {tagName: 'div', children: []}
-    component.children.push({
-      tagName: 'h1',
-      text: 'Retour',
-      attributes: {
-          'data-tabId': 'locations'
-      },
-      eventListener: {
-          event: 'click',
-          function: () => {
-              tabManager.openTabById('locations')
-          }
-      }
-    })
     component.children.push(Location(res.data.location))
     component.children.push(CardList(res.data.location.residents))
     return createElement(component)

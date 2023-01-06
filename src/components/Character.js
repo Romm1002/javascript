@@ -5,19 +5,6 @@ export default function Character({ name, status, species, gender, origin, locat
         tagName: 'div',
         children: [
             {
-                tagName: 'h1',
-                text: 'Retour',
-                attributes: {
-                    'data-tabId': 'characters'
-                },
-                eventListener: {
-                    event: 'click',
-                    function: () => {
-                        tabManager.openTabById('characters')
-                    }
-                }
-            },
-            {
                 tagName: 'div',
                 classList: ['details'],
                 children: [
