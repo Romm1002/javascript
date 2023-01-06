@@ -29,6 +29,7 @@ const CharactersPage = async ({ search, page }) => {
       component.children.push({
         tagName: 'button',
         text: 'prev',
+        classList: ['pagination-prev'],
         eventListener: {
           event: 'click',
           function: () => {
@@ -42,6 +43,7 @@ const CharactersPage = async ({ search, page }) => {
       component.children.push({
         tagName: 'button',
         text: 'next',
+        classList: ['pagination-next'],
         eventListener: {
           event: 'click',
           function: () => {
