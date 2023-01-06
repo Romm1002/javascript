@@ -22,7 +22,6 @@ const CharactersPage = async ({ search, page }) => {
 
     component.children.push(list);
 
-    
     if (res.data.locations.info.prev !== null) {
       component.children.push({
         tagName: 'button',
@@ -31,7 +30,7 @@ const CharactersPage = async ({ search, page }) => {
         eventListener: {
           event: 'click',
           function: () => {
-            tabManager.componentMapping.locations.params[0].page = new URLSearchParams(res.info.prev.slice(res.info.prev.indexOf('?'))).get('page');
+            tabManager.componentMapping.locations.params[0].page = res.data.locations.info.prev;
             tabManager.openTabById('locations');
           }
         }
@@ -45,7 +44,7 @@ const CharactersPage = async ({ search, page }) => {
         eventListener: {
           event: 'click',
           function: () => {
-            tabManager.componentMapping.locations.params[0].page = new URLSearchParams(res.info.next.slice(res.info.next.indexOf('?'))).get('page');
+            tabManager.componentMapping.locations.params[0].page = res.data.locations.info.next;
             tabManager.openTabById('locations');
           }
         }

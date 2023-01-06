@@ -64,7 +64,13 @@ export default function Character({ name, status, species, type, gender, origin,
                                         children: [
                                             {
                                                 tagName: 'span',
-                                                text: location.name
+                                                text: location.name,
+                                                // eventListener:{
+                                                //     event: 'click',
+                                                //     function: () => {
+
+                                                //     }
+                                                // }
                                             }
                                         ]
                                     },
