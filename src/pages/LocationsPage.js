@@ -13,7 +13,6 @@ const CharactersPage = async ({ search, page }) => {
   } else {
     res = await apiManager.fetchAllLocations(page)
   }
-  console.log(res)
   let component = { tagName: 'div', children: [{ tagName: 'h1', text: 'Liste de lieux :' }] }
 
   if (res.data.locations.info.count === 0 ) {
