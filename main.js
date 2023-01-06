@@ -19,6 +19,8 @@ export const tabManager = new TabManager(rootElement, {
 tabManager.openTabById('characters');
 document.querySelector('#searchRefresh').addEventListener('click', e => {
   tabManager.componentMapping.characters.params[0].search = ''
+  tabManager.componentMapping.characters.params[0].page = 0
+  document.querySelector('#searchInput').value = '';
 })
 document.querySelectorAll('[data-tabId]').forEach(element => {
   element.addEventListener('click', () => {

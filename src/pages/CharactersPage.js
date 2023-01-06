@@ -24,6 +24,7 @@ const CharactersPage = async ({ search, page }) => {
 
     component.children.push(list);
 
+    
     if (res.info.prev !== null) {
       component.children.push({
         tagName: 'button',
@@ -31,7 +32,7 @@ const CharactersPage = async ({ search, page }) => {
         eventListener: {
           event: 'click',
           function: () => {
-            tabManager.componentMapping.characters.params[0].page = res.info.prev.slice(res.info.prev.indexOf('page=') + 5).split('&')[0];
+            tabManager.componentMapping.characters.params[0].page = new URLSearchParams(res.info.prev.slice(res.info.prev.indexOf('?'))).get('page');
             tabManager.openTabById('characters');
           }
         }
