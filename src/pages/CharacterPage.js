@@ -6,7 +6,8 @@ const apiManager = new ApiManager();
 
 const CharacterPage = async ({id}) => {
     const res = await apiManager.fetchCharacter(id)
-    return createElement(Character(res))
+    console.log(res.data.character)
+    return createElement(Character(res.data.character))
 }
 
 export default CharacterPage

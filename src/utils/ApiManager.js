@@ -1,72 +1,115 @@
 class ApiManager {
     constructor() {
-        this.rootUrl = 'https://rickandmortyapi.com/api'
+        this.rootUrl = 'https://rickandmortyapi.com/api';
+        this.graphQLUrl = 'https://rickandmortyapi.com/graphql';
     }
 
-
-    async fetchAllCharacters(page) {
-        try {
-            const req = await fetch(this.rootUrl + '/character' + '?page=' + page)
-            const res = await req.json()
-
-            return res
-        } catch (e) {
-            throw new Error(e)
+    async fetchAllCharacters(page){
+        return await this.performGraphQLQuery(` 
+        query GetCharacters($page: Int!) {
+            characters(page: $page) {
+                info{
+                    next
+                    prev
+                }
+                results{
+                    id
+                    name
+                    image
+                }
+            }
         }
+      `, {'page': page});
     }
-
-    async fetchCharacters(search, page) {        
-        try {
-            const req = await fetch(this.rootUrl + '/character?name=' + search + '&page=' + page)
-            const res = await req.json()
-
-            return res
-        } catch (e) {
-            throw new Error(e)
+    async fetchCharacters(search, page) {   
+        return await this.performGraphQLQuery(` 
+        query GetCharacters($page: Int!, $search: String) {
+            characters(page: $page, filter: { name: $search }) {
+                info{
+                    next
+                    prev
+                }
+                results{
+                    id
+                    name
+                    image
+                }
+            }
         }
+      `, {'page': page, 'search': search});
     }
 
+    
     async fetchCharacter(id) {
-        try {
-            const req = await fetch(this.rootUrl + '/character/' + id)
-            const res = await req.json()
-
-            return res
-        } catch (e) {
-            throw new Error(e)
+        return await this.performGraphQLQuery(` 
+        query GetCharacter($id: ID!) {
+            character(id: $id){
+                id
+                name
+                gender
+                status
+                species
+                image
+                location{
+                  name
+                }
+                origin{
+                  name
+                }
+              }
         }
+      `, {'id': id});
+        
     }
 
+    
     async fetchAllLocations(page){
-        try {
-            const req = await fetch(this.rootUrl + '/location' + '?page=' + page)
-            const res = await req.json()
-
-            return res
-        } catch (e) {
-            throw new Error(e)
+        return await this.performGraphQLQuery(` 
+        query GetLocations($page: Int!) {
+            locations(page: $page){
+                info{
+                  prev
+                  next
+                  count
+                }
+                results{
+                  id
+                  name
+                  type
+                  dimension
+                  residents {
+                    id
+                  }
+                }
+            }
         }
+      `, {'page': page});
     }
 
-    async fetchLocations(search, page) {        
-        try {
-            const req = await fetch(this.rootUrl + '/location?name=' + search + '&page=' + page)
-            const res = await req.json()
 
-            return res
-        } catch (e) {
-            throw new Error(e)
-        }
+    async performGraphQLQuery(graphQLQuery, variables) {
+        return await this.performHttpRequest(this.graphQLUrl, {
+            headers: {
+                "Content-Type": "application/json"
+            },
+            method: "POST",
+            body: JSON.stringify({
+                query: graphQLQuery,
+                variables: variables
+            })
+        })
     }
-
-    async fetchLocation(id) {
+    async performHttpRequest(url, requestSettings = null) {
         try {
-            const req = await fetch(this.rootUrl + '/location/' + id)
-            const res = await req.json()
-
-            return res
-        } catch (e) {
-            throw new Error(e)
+            return await fetch(url, requestSettings)
+                .then((data) => data.json())
+                .then(data => { if("error" in data){
+                    return [];
+                } else {
+                    return data;
+                }});
+        } catch(ex){
+            throw new Error(ex);
         }
     }
 

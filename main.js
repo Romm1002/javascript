@@ -24,7 +24,7 @@ export const tabManager = new TabManager(rootElement, {
 tabManager.openTabById('characters');
 document.querySelector('#searchRefresh').addEventListener('click', e => {
   tabManager.componentMapping.characters.params[0].search = ''
-  tabManager.componentMapping.characters.params[0].page = 0
+  tabManager.componentMapping.characters.params[0].page = 1
   document.querySelector('#searchInput').value = '';
 })
 document.querySelectorAll('[data-tabId]').forEach(element => {
@@ -36,7 +36,7 @@ document.querySelectorAll('[data-tabId]').forEach(element => {
 document.querySelector('#searchForm').addEventListener('submit', e => {
   e.preventDefault();
   tabManager.componentMapping.characters.params[0].search = document.querySelector('#searchInput').value;
-  tabManager.componentMapping.characters.params[0].page = 0;
+  tabManager.componentMapping.characters.params[0].page = 1;
   tabManager.openTabById('characters')
 })
 
