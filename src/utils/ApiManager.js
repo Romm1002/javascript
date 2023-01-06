@@ -85,6 +85,23 @@ class ApiManager {
         }
       `, {'page': page});
     }
+    async fetchLocation(id){
+        return await this.performGraphQLQuery(` 
+        query GetLocations($id: ID!) {
+            location(id: $id){
+                id
+                name
+                type
+                dimension
+                residents{
+                  id
+                  name
+                  image
+                }
+            }
+        }
+      `, {'id': id});
+    }
 
 
     async performGraphQLQuery(graphQLQuery, variables) {

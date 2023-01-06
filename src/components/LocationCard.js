@@ -9,8 +9,8 @@ export default function Card({name, type, dimension, residents, id, classList })
     eventListener: {
       event: 'click',
       function: e => {
-        // tabManager.componentMapping.character.params = [{ id: e.currentTarget.id }]
-        // tabManager.openTabById('character',)
+        tabManager.componentMapping.location.params = [{ id: e.currentTarget.id }]
+        tabManager.openTabById('location',)
       }
     },
     children: [

@@ -2,6 +2,7 @@ import './style.css'
 import CharactersPage from "./src/pages/CharactersPage";
 import CharacterPage from "./src/pages/CharacterPage";
 import LocationsPage from "./src/pages/LocationsPage";
+import LocationPage from "./src/pages/LocationPage";
 import TabManager from "./src/utils/TabManager";
 
 const rootElement = document.querySelector('#app')
@@ -17,6 +18,10 @@ export const tabManager = new TabManager(rootElement, {
   locations: {
     component: LocationsPage,
     params: [{ search: '', page: 1 }]
+  },
+  location: {
+    component: LocationPage,
+    params: [{ id: '' }]
   },
 
 })
