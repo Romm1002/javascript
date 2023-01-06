@@ -14,3 +14,4 @@ Pour installer le projet, ouvirir un terminal et entrer les commandes suivantes 
 - Pour naviger de page en page, une pagination est disponible en bas des pages
 - Pour afficher les détails d'un personnage, il faut cliquer dessus
 - Pour chercher un personnage, il faut entrer son nom dans la barre de recherche qui se trouve dans la barre de navigation
+- En cliquant sur un lieu, l'application affiche les personnages présents dans le lieu
