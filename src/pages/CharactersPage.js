@@ -16,15 +16,15 @@ const CharactersPage = async ({ search, page }) => {
 
   let component = { tagName: 'div', children: [{ tagName: 'h1', text: 'Liste de personnage :' }] }
 
-  if ('error' in res) {
-    component.children.push({ tagName: 'h2', text: res.error });
+  if (res.data.characters.results.length === 0 ) {
+    component.children.push({ tagName: 'h2', text: 'Aucun personnage trouvé' });
   } else {
-    let list = CardList(res.results);
+    let list = CardList(res.data.characters.results);
 
     component.children.push(list);
 
     
-    if (res.info.prev !== null) {
+    if (res.data.characters.info.prev !== null) {
       component.children.push({
         tagName: 'button',
         text: 'prev',
@@ -32,13 +32,13 @@ const CharactersPage = async ({ search, page }) => {
         eventListener: {
           event: 'click',
           function: () => {
-            tabManager.componentMapping.characters.params[0].page = new URLSearchParams(res.info.prev.slice(res.info.prev.indexOf('?'))).get('page');
+            tabManager.componentMapping.characters.params[0].page = res.data.characters.info.prev;
             tabManager.openTabById('characters');
           }
         }
       })
     }
-    if (res.info.next !== null) {
+    if (res.data.characters.info.next !== null) {
       component.children.push({
         tagName: 'button',
         text: 'next',
@@ -46,7 +46,7 @@ const CharactersPage = async ({ search, page }) => {
         eventListener: {
           event: 'click',
           function: () => {
-            tabManager.componentMapping.characters.params[0].page = new URLSearchParams(res.info.next.slice(res.info.next.indexOf('?'))).get('page');
+            tabManager.componentMapping.characters.params[0].page = res.data.characters.info.next;
             tabManager.openTabById('characters');
           }
         }

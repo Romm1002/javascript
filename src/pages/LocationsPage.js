@@ -16,15 +16,15 @@ const CharactersPage = async ({ search, page }) => {
   console.log(res)
   let component = { tagName: 'div', children: [{ tagName: 'h1', text: 'Liste de lieux :' }] }
 
-  if ('error' in res) {
-    component.children.push({ tagName: 'h2', text: res.error });
+  if (res.data.locations.info.count === 0 ) {
+    component.children.push({ tagName: 'h2', text: 'Aucun lieu trouvé' });
   } else {
-    let list = CardList(res.results);
+    let list = CardList(res.data.locations.results);
 
     component.children.push(list);
 
     
-    if (res.info.prev !== null) {
+    if (res.data.locations.info.prev !== null) {
       component.children.push({
         tagName: 'button',
         text: 'prev',
@@ -38,7 +38,7 @@ const CharactersPage = async ({ search, page }) => {
         }
       })
     }
-    if (res.info.next !== null) {
+    if (res.data.locations.info.next !== null) {
       component.children.push({
         tagName: 'button',
         text: 'next',
