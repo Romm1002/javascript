@@ -5,7 +5,7 @@ Pour installer le projet, ouvirir un terminal et entrer les commandes suivantes 
   ```npm
   npm install
   ```
-  ```bash
+  ```npm
   npm run dev
   ```
 
