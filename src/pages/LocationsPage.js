@@ -1,7 +1,7 @@
 import { tabManager } from "../../main"
-import CardList from "../components/CharactersCardList"
 import createElement from "../dom/createElement"
 import ApiManager from "../utils/ApiManager"
+import CardList from "../components/LocationsCardList";
 
 const apiManager = new ApiManager();
 
@@ -9,12 +9,12 @@ const apiManager = new ApiManager();
 const CharactersPage = async ({ search, page }) => {
   let res = [];
   if (search != '') {
-    res = await apiManager.fetchCharacters(search, page)
+    res = await apiManager.fetchLocations(search, page)
   } else {
-    res = await apiManager.fetchAllCharacters(page)
+    res = await apiManager.fetchAllLocations(page)
   }
-
-  let component = { tagName: 'div', children: [{ tagName: 'h1', text: 'Liste de personnage :' }] }
+  console.log(res)
+  let component = { tagName: 'div', children: [{ tagName: 'h1', text: 'Liste de lieux :' }] }
 
   if ('error' in res) {
     component.children.push({ tagName: 'h2', text: res.error });
