@@ -16,7 +16,7 @@ export default function Character({ name, status, species, type, gender, origin,
                     {
                         tagName: 'h2',
                         text: name + ' ',
-                        innerHTML: gender == "Male" ? "<i class='bi bi-gender-male'></i>" : "<i class='bi bi-gender-female'></i>",
+                        innerHTML: (gender == "Male") ? "<i class='bi bi-gender-male'></i>" : (gender == "Female") ? "<i class='bi bi-gender-female'></i>" : (gender == "Genderless" || "unknown") ? "<i class='bi bi-gender-ambiguous'></i>" : "",
                     },
                     {
                         tagName: 'div',
@@ -28,7 +28,7 @@ export default function Character({ name, status, species, type, gender, origin,
                                 children: [
                                     {
                                         tagName: 'div',
-                                        classList: [status == 'Alive' ? 'green' : 'red']
+                                        classList: [(status == 'Alive') ? 'green' : (status == 'Dead') ? 'red' : (status == 'unknown') ? 'grey' : '']
                                     }
                                 ],
                                 text: status + ' - ' + species,
@@ -37,31 +37,35 @@ export default function Character({ name, status, species, type, gender, origin,
                     },
                     {
                         tagName: 'div',
-                        classList: ['row'],
+                        classList: ['row', 'column'],
                         children: [
                             {
                                 tagName: 'p',
-                                text: 'Status : ' + status
+                                classList: ['subtitle'],
+                                text: 'Dernière localisation connue :',
+                                children: [
+                                    {
+                                        tagName: 'span',
+                                        text: location.name
+                                    }
+                                ]
                             },
                         ]
                     },
                     {
                         tagName: 'div',
-                        classList: ['row'],
+                        classList: ['row', 'column'],
                         children: [
                             {
                                 tagName: 'p',
-                                text: 'Dernière localisation connue : ' + location.name
-                            },
-                        ]
-                    },
-                    {
-                        tagName: 'div',
-                        classList: ['row'],
-                        children: [
-                            {
-                                tagName: 'p',
-                                text: 'Origine : ' + origin.name
+                                classList: ['subtitle'],
+                                text: 'Origine :',
+                                children: [
+                                    {
+                                        tagName: 'span',
+                                        text: origin.name
+                                    }
+                                ]
                             },
                         ]
                     },
