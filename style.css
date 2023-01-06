@@ -10,11 +10,50 @@
 
 body{
   background-color: rgb(39, 43, 51);
+  padding-top: 130px;
 }
 
 header{
   width: 80%;
   margin: 0 auto;
+}
+
+nav{
+  width: 100%;
+  background-color: rgb(60, 62, 68);
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+}
+nav .wrapper{
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+nav .wrapper ul{
+  display: flex;
+  list-style: none;
+  align-items: center;
+  margin-left: 50px;
+  width: 100%;
+}
+nav .wrapper ul li{
+  margin-right: 25px;
+}
+nav .wrapper ul li button{
+  background-color: rgb(60, 62, 68);
+  border: none;
+  font-size: 18px;
+  color: rgb(245, 245, 245);
+  font-weight: 600;
+  cursor: pointer;
+}
+nav .wrapper ul li button:hover{
+  color: orange;
 }
 
 h1{
@@ -38,13 +77,13 @@ h2{
 
 .search{
   display: flex;
-  margin-bottom: 20px;
 }
 .search input{
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
   border: none;
   padding: 5px 10px;
+  outline: none;
 }
 .search button{
   border: none;
