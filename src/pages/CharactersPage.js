@@ -13,18 +13,19 @@ const CharactersPage = async ({ search }) => {
   } else {
     res = await apiManager.fetchAllCharacters()
   }
-  if ('error' in res) {
-    return createElement({ tagName: 'h2', text: res.error })
-  }
-  let list = CardList(res.results);
+  console.log(res)
 
-  for (let card of list.querySelectorAll('.character')) {
-    card.addEventListener('click', e => {
-      tabManager.componentMapping.character.params = [{ id: e.currentTarget.id }]
-      tabManager.openTabById('character',)
-    })
+  let page = { tagName: 'div', children: [{ tagName: 'h1', text: 'Liste de personnage :' }] }
+
+  if ('error' in res) {
+    page.children.push({ tagName: 'h2', text: res.error });
+  } else {
+    let list = CardList(res.results);
+
+    page.children.push(list);
   }
-  return list;
+
+  return createElement(page);
 }
 
 export default CharactersPage

@@ -33,6 +33,9 @@ const createElement = (obj) => {
       element.appendChild(child);
     });
   }
+  if ('eventListener' in obj) {
+    element.addEventListener(obj.eventListener.event, obj.eventListener.function)
+  }
 
   return element;
 };
