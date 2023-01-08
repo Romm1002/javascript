@@ -16,7 +16,7 @@ export default function Card({name, type, dimension, residents, id, classList })
     children: [
       {
         tagName: 'p',
-        classList: ['p1'],
+        classList: ['p1', 'clickable'],
         text: type + ' ' + name
       },
       {

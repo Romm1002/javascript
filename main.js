@@ -28,20 +28,39 @@ export const tabManager = new TabManager(rootElement, {
 
 tabManager.openTabById('characters');
 document.querySelector('#searchRefresh').addEventListener('click', e => {
-  tabManager.componentMapping.characters.params[0].search = ''
-  tabManager.componentMapping.characters.params[0].page = 1
-  document.querySelector('#searchInput').value = '';
+  if(tabManager.currentComponent == 'characters' || tabManager.currentComponent == 'character'){
+    tabManager.componentMapping.characters.params[0].search = ''
+    tabManager.componentMapping.characters.params[0].page = 1
+    document.querySelector('#searchInput').value = '';
+    tabManager.openTabById('characters')
+  }else if (tabManager.currentComponent == 'locations' || tabManager.currentComponent == 'location'){
+    tabManager.componentMapping.locations.params[0].search = ''
+    tabManager.componentMapping.locations.params[0].page = 1
+    document.querySelector('#searchInput').value = '';
+    tabManager.openTabById('locations')
+  }
 })
 document.querySelectorAll('[data-tabId]').forEach(element => {
   element.addEventListener('click', () => {
     tabManager.openTabById(element.getAttribute('data-tabId'))
+    if(tabManager.currentComponent == 'characters' || tabManager.currentComponent == 'character'){
+      document.querySelector('#searchInput').value = tabManager.componentMapping.characters.params[0].search
+    }else if (tabManager.currentComponent == 'locations' || tabManager.currentComponent == 'location'){
+      document.querySelector('#searchInput').value = tabManager.componentMapping.locations.params[0].search
+    }
   })
 })
 
 document.querySelector('#searchForm').addEventListener('submit', e => {
   e.preventDefault();
-  tabManager.componentMapping.characters.params[0].search = document.querySelector('#searchInput').value;
-  tabManager.componentMapping.characters.params[0].page = 1;
-  tabManager.openTabById('characters')
+  if(tabManager.currentComponent == 'characters' || tabManager.currentComponent == 'character'){
+    tabManager.componentMapping.characters.params[0].search = document.querySelector('#searchInput').value;
+    tabManager.componentMapping.characters.params[0].page = 1;
+    tabManager.openTabById('characters')
+  }else if (tabManager.currentComponent == 'locations' || tabManager.currentComponent == 'location'){
+    tabManager.componentMapping.locations.params[0].search = document.querySelector('#searchInput').value;
+    tabManager.componentMapping.locations.params[0].page = 1;
+    tabManager.openTabById('locations')
+  }
 })
 

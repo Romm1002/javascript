@@ -52,6 +52,7 @@ export default function Character({ name, status, species, gender, origin, locat
                                             {
                                                 tagName: 'span',
                                                 text: location.name,
+                                                classList: ['clickable'],
                                                 eventListener:{
                                                     event: 'click',
                                                     function: () => {
@@ -76,6 +77,7 @@ export default function Character({ name, status, species, gender, origin, locat
                                             {
                                                 tagName: 'span',
                                                 text: origin.name,
+                                                classList: ['clickable'],
                                                 eventListener:{
                                                     event: 'click',
                                                     function: () => {
